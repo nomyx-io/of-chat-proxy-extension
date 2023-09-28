@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "LLM Chat Integration",
+  "description": "Streams chat messages to LLM and receives responses",
+  "version": "1.0",
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://hugh-column-technological-frankfurt.trycloudflare.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

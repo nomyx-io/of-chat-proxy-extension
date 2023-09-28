@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Popup</title>
+    <style>
+        /* Add your styles here */
+    </style>
+</head>
+<body>
+    <label for="manualMessage">Enter a message:</label>
+    <textarea id="manualMessage" rows="4" cols="50"></textarea>
+    <button id="selectMessage">Select Messages</button>
+
+    <h4>Last Five Messages:</h4>
+    <label><input type="radio" id="selectMessage1" name="messageSelect"> <input type="text" id="message1" readonly></label><br>
+    <label><input type="radio" id="selectMessage2" name="messageSelect"> <input type="text" id="message2" readonly></label><br>
+    <label><input type="radio" id="selectMessage3" name="messageSelect"> <input type="text" id="message3" readonly></label><br>
+    <label><input type="radio" id="selectMessage4" name="messageSelect"> <input type="text" id="message4" readonly></label><br>
+    <label><input type="radio" id="selectMessage5" name="messageSelect"> <input type="text" id="message5" readonly></label><br>
+
+    <button id="sendToBot">Send to Bot</button>
+    
+    <h4>LLM Response:</h4>
+    <textarea id="llmResponse" rows="4" cols="50" readonly></textarea>
+
+    <script src="popup.js"></script>
+</body>
+</html>
+
+
