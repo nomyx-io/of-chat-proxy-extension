@@ -66,7 +66,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     getLLMResponse(request.message, request.history).then((llmResponse) => {
       console.log('LLM response:', llmResponse);
       // Populate the textarea with the LLM response
-      document.querySelector('textarea#sendText').value = llmResponse;
+      document.querySelector('textarea#sendText').value = JSON.parse(llmResponse);
       // Optionally, update the popup interface with the selected message and response
       updateInterface([request.message], llmResponse);
     });

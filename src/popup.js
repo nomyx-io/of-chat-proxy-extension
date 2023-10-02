@@ -16,7 +16,7 @@ document.getElementById('selectMessage').addEventListener('click', function() {
     chrome.tabs.executeScript({
       code: `Array.from(document.querySelectorAll('.muser-short-msg p')).slice(-5).map(el => el.innerText)`
     }, (selections) => {
-      const lastFiveMessages = selections[0];
+      const lastFiveMessages = selections; // is this a bug?
       lastFiveMessages.forEach((message, index) => {
         document.getElementById(`message${index + 1}`).value = message;
       });
@@ -24,15 +24,18 @@ document.getElementById('selectMessage').addEventListener('click', function() {
   }
 });
 
-// Event listener for the send to bot button
-document.getElementById('sendToBot').addEventListener('click', function() {
-  let selectedMessage;
+function getFirstCheckedMessage() {
   for (let i = 1; i <= 5; i++) {
     if (document.getElementById(`selectMessage${i}`).checked) {
-      selectedMessage = document.getElementById(`message${i}`).value;
-      break;
+      return document.getElementById(`message${i}`).value;
     }
   }
+}
+
+// Event listener for the send to bot button
+document.getElementById('sendToBot').addEventListener('click', function() {
+
+  let selectedMessage = getFirstCheckedMessage();
 
   if (selectedMessage) {
     // Send the message to the content script to get the LLM response
