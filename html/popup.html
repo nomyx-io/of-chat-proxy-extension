@@ -31,6 +31,7 @@
   <div>
     <label>Last Five <span style="color: #F62681;">Messages</span></label>
     <button id="refreshMessages">Refresh</button>
+    <button id="refreshButton" class="reload-button">&#8635;</button>
     <br style="clear: both;"> 
   </div>                                             
   <div>                                                                           
@@ -44,6 +45,11 @@
     <br>
     <div style="margin-top: 10px;">
         <label><span style="color: #F62681;">Response</span></label>
+        <div id="loadingDots" class="hidden">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
         <textarea id="llmResponse" rows="3" readonly></textarea>
     </div>                                                                              
 </div>                                                                            

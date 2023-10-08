@@ -64,7 +64,6 @@ function processLatestMessages() {
   updateInterface(messages);
 }
 
-
 // get messages on page load
 window.onload = function() {                                                 
   var checkExist = setInterval(function() {                                  
@@ -74,6 +73,14 @@ window.onload = function() {
     }                                                                        
   }, 1000); // check every 1000ms                                            
 }; 
+
+// Listen to popup for a message to refresh messages
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action === 'refreshMessages') {
+    console.log('Received request to refresh messages');
+     processLatestMessages();
+  }
+});
 
 // Listen to popup for a message to send to LLM
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {

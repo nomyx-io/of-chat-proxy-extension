@@ -1,4 +1,4 @@
-// Message queue to temporarily hold messages and response
+// hold messages and response
 let messages = [];
 let response = '';
 
@@ -23,37 +23,19 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     // Add incoming messages to the message queue individually
     messages = request.messages;
     console.log(messages);
-    
     // Save messages to chrome storage
     chrome.storage.local.set({ messages: messages });
+    chrome.runtime.sendMessage({ action: 'sendMessageResponse', messages: messages });
   } else if (request.action === "updateLLM") {
     // Add incoming response to the message queue
     response = request.response;
     console.log('response: ', response);
-
     // Save response to chrome storage
     chrome.storage.local.set({ response: response });
     chrome.runtime.sendMessage({ action: 'sendLLMResponse', response: response });
   }
-
   // Send response asynchronously
   sendResponse({ messages: messages, response: response });
 });
 
-// Handle the request to update data
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request.request === 'updateData') {
-    console.log('Received request to update data');
-    // Fetch messages from chrome storage
-    chrome.storage.local.get(['messages'], function(result) {
-      console.log('Messages are currently: ', result.messages);
-      // Store the messages in a variable to avoid returning undefined
-      const messages = result.messages || [];
-      console.log('Sending messages:', messages);
-      // Send the messages as a response
-      sendResponse({ messages: messages });
-    });
-    // Don't return true here, since the response will be sent asynchronously
-  }
-});
 

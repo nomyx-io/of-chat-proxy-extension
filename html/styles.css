@@ -41,4 +41,59 @@ input[type="radio"] {
     cursor: default; /* Remove cursor interaction */
     font-size: 15px;
   }
+/* Style for the button with only the arrow */
+#refreshButton {
+  font-size: 20px;
+  background-color: #F62681;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 10px; /* Center the text (arrow) vertically */
+  text-align: center;
+  margin-right: 130px; /* Add some spacing between the text and the button */
+  margin-top: 7px;
+  float: right;
+  padding-left: 4px;
+  padding-bottom: 10px;
+  padding-top: 1px;
+}
+/* Change text color to black on hover */
+#refreshButton:hover {
+  color: black;
+}
+/* Add spinning animation when the button is clicked */
+#refreshButton.clicked {
+  animation: spin 1s linear forwards;
+  transform-origin: center;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Style for the loading dots container */
+#loadingDots {
+  display: inline-block;
+}
+
+/* Style for each loading dot */
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #F62681;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 3px; /* Adjust the spacing between dots as needed */
+  opacity: 0; /* Start with dots partially transparent */
+  transition: opacity 0.3s ease; /* Apply opacity transition for smooth effect */
+  box-shadow: 0 0 10px 5px rgba(246, 38, 129, 0.5); /* Pink glow effect */
+}
+/* Hidden class to hide the loading dots initially */
+.hidden {
+  display: none;
+}
+
   
