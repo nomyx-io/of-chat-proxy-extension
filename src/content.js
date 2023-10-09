@@ -9,7 +9,6 @@ async function getLLMResponse(message, history) {
         const response = await fetch('https://api.openai.com/v1/engines/davinci/completions', {
           method: 'POST',
           headers: {
-            //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
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${apiKey}`, // Include the stored API key
           },
