@@ -4,18 +4,24 @@
   "description": "Streams chat messages to LLM and receives responses",
   "version": "1.0",
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "host_permissions": [
-    "https://hugh-column-technological-frankfurt.trycloudflare.com/"
+    "https://hugh-column-technological-frankfurt.trycloudflare.com/",
+    "https://www.sextpanther.com/*"
   ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "matches": ["https://www.sextpanther.com/*"],
+      "js": ["src/content.js"]
     }
   ],
   "action": {
     "default_popup": "html/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
   }
 }
